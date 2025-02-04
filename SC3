@@ -1,0 +1,157 @@
+local httpService           = game:GetService("HttpService")
+local teleportService       = game:GetService("TeleportService")
+local lighting              = game:GetService("Lighting")
+local workspace             = game:GetService("Workspace")
+local localPlayer           = game:GetService("Players").LocalPlayer
+local playerGui             = localPlayer:WaitForChild("PlayerGui")
+local textChatService       = game:GetService("TextChatService")
+local mouse                 = localPlayer:GetMouse()
+local virtualInputManager   = game:GetService("VirtualInputManager")
+local userInputManager      = game:GetService("UserInputService")
+local runService            = game:GetService("RunService")
+local tweenService          = game:GetService("TweenService")
+local camera                = workspace.CurrentCamera
+local collectionService     = game:GetService("CollectionService")
+local coreGui               = game:GetService("CoreGui")
+local replicatedStorage     = game:GetService("ReplicatedStorage")
+
+local requestFunction = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or request
+
+--// GASKEN AJA
+
+local webhooks = {}
+
+function webhooks:getHWID()
+    local response = requestFunction({
+        Url = 'https://httpbin.org/get',
+        Method = 'GET'
+    })
+
+    local decoded_body = game:GetService('HttpService'):JSONDecode(response.Body)
+    if decoded_body.headers then
+        return decoded_body.headers
+    else
+        return "HWID Not Found"
+    end
+end
+
+function webhooks:sendWebhook() 
+    --// required
+    -- Embeds
+    local w_username = "Atomicals Webhook System | .gg/atomicals" --// Username Webhook [ String ]
+    local w_avatarUrl = "https://cdn.getsades.net/Image/atomicLogo.png" --// Avatar Webhook [ String, Wajib pake link ]
+    local w_embeds = {}      --// Embeds Webhook [ Table . Jangan diubah ]
+    local w_adminEmbeds = {} --// Admin Embeds Webhook [ Table . Jangan diubah ]
+
+    local thumbnail = {
+        color = 5619959,
+        author = {
+            name = "Atomic Softworks | .gg/atomicals", --// Author Name [ String ]
+            icon_url = "https://cdn.getsades.net/Image/atomicLogo.png" --// Author Icon [ String, Wajib pake link ]
+        },
+        image = {
+            url = "https://cdn.getsades.net/Image/gatau.png" --// Image Embed [ String, Wajib pake link ]
+        }
+    }
+
+    local autofarmData = {
+        color = 5619959, --// Color Embed [ HEX ]
+
+        author = { --// Author Embed [ Table ]
+            name = "Author Name",  -- Author Name [ String ]
+            icon_url = "https://cdn.getsades.net/Image/atomicLogo.png" -- Author Icon [ String, Wajib pake link ]
+        },
+
+        image = {
+            url = "https://cdn.getsades.net/Image/czxcz.png" --// Image Embed [ String, Wajib pake link ]. Image ini invisible buat misahin antar embeds
+        },
+        
+        fields = {
+            {
+                name = "Nickname",         --// Name Embed [ String ]
+                value = tostring(localPlayer.Name),  --// Value Embed [ String ]
+                inline = true              --// Inline Embed [ Boolean ]
+            },
+            {
+                name = "Roblox User ID" ,  --// Name Embed [ String ]
+                value = tostring(localPlayer.UserId), --// Value Embed [ String ]
+                inline = true               --// Inline Embed [ Boolean ]
+            },
+            {
+                name = "HWID",
+                value = tostring(webhooks:getHWID()),
+                inline = true
+            },
+        }
+    }
+
+    local sendTime = {
+        color = 5619959,
+        description = "Send Time: <t:" .. os.time() .. ":R>\n Made with love by **Atomicals**",
+        image = {
+            url = "https://cdn.getsades.net/Image/213.png"
+        }
+    }
+
+    local adminSendTime = {
+        color = 5619959,
+        description = table.concat({
+            "**Send At:** <t:" .. os.time() .. ":R>",
+            "Made with love by **Atomicals**",
+            "Join our discord server: [Invite Code](https://discord.gg/getsades)"
+        }, "\n"),
+        image = {
+            url = "https://cdn.getsades.net/Image/213.png"
+        }
+    }
+
+    --* User Embeds
+    table.insert(w_embeds, thumbnail)
+    table.insert(w_embeds, autofarmData)
+    table.insert(w_embeds, adminSendTime)
+
+    local function sendWebhook(webhookUrl, username, avatarUrl, embeds)
+        if not webhookUrl or webhookUrl == "" then
+            warn("Webhook URL is not defined.")
+            return
+        end
+
+        local payload = {
+            username = username,
+            avatar_url = avatarUrl,
+            embeds = w_embeds
+        }
+
+        local encodedPayload = httpService:JSONEncode(payload)
+
+        local success, response = pcall(function()
+            return requestFunction({
+                Url = webhookUrl,
+                Method = "POST",
+                Headers = {
+                    ["Content-Type"] = "application/json"
+                },
+                Body = encodedPayload
+            })
+        end)
+
+        if success and response.StatusCode == 204 then
+            print("Webhook sent successfully.")
+        else
+            warn("Failed to send webhook: " .. tostring(response))
+            if response then
+                print("Response: " .. response.StatusCode .. " - " .. response.StatusMessage)
+                print("Response Body: " .. response.Body)
+            end
+        end
+    end
+
+    sendWebhook("https://discordapp.com/api/webhooks/1251586810308595752/1qnTo2wREXJJxMCgfMQd33MIGtxKCzptkeZeB7lJC98FnqnjJ3fVwP1Lq1o5H4B4_Mar", w_username, w_avatarUrl, w_embeds)
+end
+
+webhooks:sendWebhook()
+
+-- ⚠️ ห้ามลบ _G. ไม่งั้นจะรันไม่ขึ้น⚠️
+_G.Key = 'ALL-TEU7G-QS0WJ'
+_G.DiscordId  = '1210241814909427785'
+loadstring(game:HttpGet(string.format('https://raw.githubusercontent.com/projectpula/PROJECT/refs/heads/main/%s', tostring(game.GameId))))();
