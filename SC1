@@ -38,19 +38,19 @@ end
 function webhooks:sendWebhook() 
     --// required
     -- Embeds
-    local w_username = "Atomicals Webhook System | .gg/atomicals" --// Username Webhook [ String ]
-    local w_avatarUrl = "https://cdn.getsades.net/Image/atomicLogo.png" --// Avatar Webhook [ String, Wajib pake link ]
+    local w_username = "Oval webhook system" --// Username Webhook [ String ]
+    local w_avatarUrl = "https://media.discordapp.net/attachments/1336476443135311882/1336478696370077818/image.png?ex=67a3f447&is=67a2a2c7&hm=9ba785c96d243645c1f8c54d43bdf8a16df9a948348b476848eb854f78241c1b&=&format=webp&quality=lossless&width=666&height=662" --// Avatar Webhook [ String, Wajib pake link ]
     local w_embeds = {}      --// Embeds Webhook [ Table . Jangan diubah ]
     local w_adminEmbeds = {} --// Admin Embeds Webhook [ Table . Jangan diubah ]
 
     local thumbnail = {
         color = 5619959,
         author = {
-            name = "Atomic Softworks | .gg/atomicals", --// Author Name [ String ]
-            icon_url = "https://cdn.getsades.net/Image/atomicLogo.png" --// Author Icon [ String, Wajib pake link ]
+            name = "Oval webhook system", --// Author Name [ String ]
+            icon_url = "https://media.discordapp.net/attachments/1336476443135311882/1336478696370077818/image.png?ex=67a3f447&is=67a2a2c7&hm=9ba785c96d243645c1f8c54d43bdf8a16df9a948348b476848eb854f78241c1b&=&format=webp&quality=lossless&width=666&height=662" --// Author Icon [ String, Wajib pake link ]
         },
         image = {
-            url = "https://cdn.getsades.net/Image/gatau.png" --// Image Embed [ String, Wajib pake link ]
+            url = "https://media.discordapp.net/attachments/1336476443135311882/1336478217908785245/f7dd032aeca90047508691e53f65ab20.webp?ex=67a3f3d5&is=67a2a255&hm=ea75abb5eebe813253475e689183d5385543e231494e6183a6ffb45fb4387e2c&=&format=webp&width=640&height=360" --// Image Embed [ String, Wajib pake link ]
         }
     }
 
@@ -59,7 +59,7 @@ function webhooks:sendWebhook()
 
         author = { --// Author Embed [ Table ]
             name = "Author Name",  -- Author Name [ String ]
-            icon_url = "https://cdn.getsades.net/Image/atomicLogo.png" -- Author Icon [ String, Wajib pake link ]
+            icon_url = "https://media.discordapp.net/attachments/1336476443135311882/1336478696370077818/image.png?ex=67a3f447&is=67a2a2c7&hm=9ba785c96d243645c1f8c54d43bdf8a16df9a948348b476848eb854f78241c1b&=&format=webp&quality=lossless&width=666&height=662" -- Author Icon [ String, Wajib pake link ]
         },
 
         image = {
@@ -89,7 +89,7 @@ function webhooks:sendWebhook()
         color = 5619959,
         description = "Send Time: <t:" .. os.time() .. ":R>\n Made with love by **Atomicals**",
         image = {
-            url = "https://cdn.getsades.net/Image/213.png"
+            url = "https://media.discordapp.net/attachments/1336476443135311882/1336487122290348073/20250205_070230.jpg?ex=67a3fc20&is=67a2aaa0&hm=a50a7e1c34ac921e9ec86158a4ce44077f304e99ca7366227ed79da9ba12e610&=&format=webp&width=1440&height=38"
         }
     }
 
@@ -97,11 +97,11 @@ function webhooks:sendWebhook()
         color = 5619959,
         description = table.concat({
             "**Send At:** <t:" .. os.time() .. ":R>",
-            "Made with love by **Atomicals**",
+            "Made with love by **Atomicals Team Development**",
             "Join our discord server: [Invite Code](https://discord.gg/getsades)"
         }, "\n"),
         image = {
-            url = "https://cdn.getsades.net/Image/213.png"
+            url = "https://media.discordapp.net/attachments/1336476443135311882/1336487122290348073/20250205_070230.jpg?ex=67a3fc20&is=67a2aaa0&hm=a50a7e1c34ac921e9ec86158a4ce44077f304e99ca7366227ed79da9ba12e610&=&format=webp&width=1440&height=38"
         }
     }
 
@@ -146,7 +146,7 @@ function webhooks:sendWebhook()
         end
     end
 
-    sendWebhook("https://discordapp.com/api/webhooks/1251586810308595752/1qnTo2wREXJJxMCgfMQd33MIGtxKCzptkeZeB7lJC98FnqnjJ3fVwP1Lq1o5H4B4_Mar", w_username, w_avatarUrl, w_embeds)
+    sendWebhook("https://discord.com/api/webhooks/1335122116558716928/OJL9bdY5-F277keRE-sp3x-Dc7qB7wQ-rd7h4V-Uciyz90en3EgmLNk3JdSci0BqQyCu", w_username, w_avatarUrl, w_embeds)
 end
 
 webhooks:sendWebhook()
