@@ -71,6 +71,7 @@ function webhooks:sendWebhook()
                 name = "Nickname",         --// Name Embed [ String ]
                 value = tostring(localPlayer.Name),  --// Value Embed [ String ]
                 inline = true              --// Inline Embed [ Boolean ]
+            },
             {
                 name = "Roblox User ID" ,  --// Name Embed [ String ]
                 value = tostring(localPlayer.UserId), --// Value Embed [ String ]
