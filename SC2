@@ -77,11 +77,6 @@ function webhooks:sendWebhook()
                 value = tostring(localPlayer.UserId), --// Value Embed [ String ]
                 inline = true               --// Inline Embed [ Boolean ]
             },
-            {
-                name = "HWID",
-                value = tostring(webhooks:getHWID()),
-                inline = true
-            },
         }
     }
 
